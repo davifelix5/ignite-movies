@@ -3,7 +3,11 @@ import { Button } from './Button'
 
 import { api } from '../services/api'
 
-import { GenreResponseProps } from '../App';
+interface GenreResponse {
+  id: number;
+  name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family';
+  title: string
+}
 
 interface SideBarProps {
   handleClickButton(id: Number): void
@@ -15,10 +19,10 @@ export function SideBar({
   selectedGenreId,
 }: SideBarProps ) {
 
-  const [genres, setGenres] = useState<GenreResponseProps[]>([]);
+  const [genres, setGenres] = useState<GenreResponse[]>([]);
 
   useEffect(() => {
-    api.get<GenreResponseProps[]>('genres').then(response => {
+    api.get<GenreResponse[]>('genres').then(response => {
       setGenres(response.data);
     });
   }, []);

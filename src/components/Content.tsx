@@ -1,13 +1,12 @@
 import { MovieCard } from "./MovieCard";
+import { Header } from "./Header";
 
 import { GenreResponseProps, MovieProps } from "../App";
-
 
 interface ContentProps {
   selectedGenre: GenreResponseProps
   movies: MovieProps[]
 }
-
 
 export function Content({
   selectedGenre,
@@ -15,9 +14,9 @@ export function Content({
 }: ContentProps) {
   return (
     <div className="container">
-      <header>
+      <Header>
         <span className="category">Categoria:<span> {selectedGenre.title}</span></span>
-      </header>
+      </Header>
 
       <main>
         <div className="movies-list">
